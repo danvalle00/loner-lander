@@ -45,3 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
   scoreData: {fileID: 11400000, guid: eedefb32a9c1b48448cfef6dc4adc0f6, type: 2}
+  fuelData: {fileID: 11400000, guid: c83e7c1405110fe4fa8d08d4cfabb7b5, type: 2}
+  currentScorePoints: 0
+  currentScoreMultiplier: 0
+  scoreDecreaseRate: 3
+  fuelToScoreRate: 0.5

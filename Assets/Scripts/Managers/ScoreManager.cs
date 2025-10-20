@@ -17,6 +17,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private float scoreDecreaseRate = 3f;
     [SerializeField] private float fuelToScoreRate = 0.5f;
 
+    private bool hasScored = false;
+
     void Awake()
     {
         fuelSlider = FindFirstObjectByType<Slider>();
@@ -38,6 +40,7 @@ public class ScoreManager : MonoBehaviour
         // pegar o score inicial e diminuir ao decorrer do tempo 
         currentScorePoints -= Time.deltaTime * scoreDecreaseRate;
         currentScorePoints = Mathf.Max(0, currentScorePoints);
+
     }
     public void SetScoreMultiplier(int multiplier)
     {
@@ -61,5 +64,13 @@ public class ScoreManager : MonoBehaviour
         int pointsFromFuel = 1000 + Mathf.FloorToInt(fuelAmount * fuelToScoreRate);
         fuelData.maxFuel = fuelAmount;
         scoreData.initialScore = pointsFromFuel;
+    }
+    public void ScoreAddPoints()
+    {
+        if (hasScored) return;
+        hasScored = true;
+        float pointSum = (currentScorePoints + fuelData.remainingFuel) * currentScoreMultiplier;
+        scoreData.highScore = pointSum;
+        currentScorePoints = pointSum;
     }
 }

@@ -99,9 +99,9 @@ public class Player : MonoBehaviour
         return verticalSpeed;
     }
 
-    public string GetCurrentFuel()
+    public float GetCurrentFuel()
     {
-        return string.Format("{0:F1}", currentFuel);
+        return currentFuel;
     }
 
 }

@@ -8,7 +8,7 @@ public class Platform : MonoBehaviour
     private TextMeshPro childText;
 
     private Transform platformTransform;
-
+    [SerializeField] private FuelScriptableObject fuelData;
 
     private Player player;
     [SerializeField] private float minVerticalSpeed = 200f;
@@ -21,8 +21,8 @@ public class Platform : MonoBehaviour
     void Awake()
     {
         childText = GetComponentInChildren<TextMeshPro>();
-
         platformTransform = GetComponent<Transform>();
+        PlatformScaling();
         childText.text = $"{scoreMultiplier}x";
         if (player == null)
         {
@@ -30,7 +30,7 @@ public class Platform : MonoBehaviour
         }
     }
 
-    private void OnValidate()
+    private void OnValidate() // remover depois que termianr de fazer as fases
     {
         platformTransform = GetComponent<Transform>();
         childText = GetComponentInChildren<TextMeshPro>();
@@ -43,8 +43,9 @@ public class Platform : MonoBehaviour
         float verticalSpeed = float.Parse(player.GetVerticalSpeed());
         if (collision.gameObject == player.gameObject && verticalSpeed < minVerticalSpeed)
         {
-            Debug.Log($"Landed on platform with {scoreMultiplier}x multiplier.");
             ScoreManager.Instance.SetScoreMultiplier(scoreMultiplier);
+            fuelData.remainingFuel = player.GetCurrentFuel();
+            ScoreManager.Instance.ScoreAddPoints();
         }
         else
         {

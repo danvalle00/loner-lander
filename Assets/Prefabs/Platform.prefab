@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bfa6cd4fe5f9b489928da53c85a4aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Platform
+  fuelData: {fileID: 11400000, guid: c83e7c1405110fe4fa8d08d4cfabb7b5, type: 2}
   minVerticalSpeed: 200
   scoreMultiplier: 5
   basePlatformLength: 6

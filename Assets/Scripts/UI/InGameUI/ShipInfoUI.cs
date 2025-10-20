@@ -22,6 +22,6 @@ public class ShipInfoUI : MonoBehaviour
     }
     private void UpdateText()
     {
-        textMesh.text = $"Horizontal Speed: {player.GetHorizontalSpeed()} \nVertical Speed: {player.GetVerticalSpeed()} \nCurrent Fuel: {player.GetCurrentFuel()}";
+        textMesh.text = $"Horizontal Speed: {player.GetHorizontalSpeed()} \nVertical Speed: {player.GetVerticalSpeed()} \nCurrent Fuel: {player.GetCurrentFuel():F2}";
     }
 }
