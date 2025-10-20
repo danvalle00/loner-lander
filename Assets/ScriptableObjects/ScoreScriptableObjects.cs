@@ -4,5 +4,6 @@ using UnityEngine;
 public class ScoreScriptableObjects : ScriptableObject
 {
     public int scoreMultiplier;
-    public int scorePoints;
+    public int initialScore;
+
 }

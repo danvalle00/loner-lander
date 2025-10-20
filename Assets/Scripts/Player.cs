@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
 {
 
     public InputSystem_Actions playerController;
+    public FuelScriptableObject fuelData;
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -13,9 +14,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float rotationStepAngle = 15f; // 15 graus na rotacao qnd apertar o input
 
     [Header("Fuel Settings")]
-    [SerializeField] private float maxFuel = 100f;
     [SerializeField] private float currentFuel;
-    [SerializeField] private float fuelConsumptionRate = 5f; // taxa de consumo de combustível por segundo
+
 
     [Header("Input Debug")]
     [SerializeField] private float thrustInput;
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerController = new InputSystem_Actions();
         animator = GetComponent<Animator>();
-        currentFuel = maxFuel;
+        currentFuel = fuelData.maxFuel;
     }
     void OnEnable()
     {
@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
         {
             Vector2 force = transform.up * thrustForce * Time.fixedDeltaTime;
             rb.AddForce(force, ForceMode2D.Force);
-            currentFuel -= thrustInput * Time.fixedDeltaTime * fuelConsumptionRate; // consome X unidade de fuel por sec
+            currentFuel -= thrustInput * Time.fixedDeltaTime * fuelData.fuelConsumptionRate; // consome X unidade de fuel por sec
         }
     }
     private void HandlerAnimator()
@@ -97,8 +97,10 @@ public class Player : MonoBehaviour
     {
         return verticalSpeed;
     }
-    public string GetCurrentFuel()
+
+    public float GetCurrentFuel()
     {
-        return string.Format("{0:F1}", currentFuel);
+        return currentFuel;
     }
+
 }

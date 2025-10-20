@@ -3081,6 +3081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
   scoreData: {fileID: 11400000, guid: eedefb32a9c1b48448cfef6dc4adc0f6, type: 2}
+  fuelData: {fileID: 0}
 --- !u!4 &1072177516
 Transform:
   m_ObjectHideFlags: 0
@@ -3216,8 +3217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78467e160ebe8d447bd3749ce96a59a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GravityManager
-  currentPlanet: 1
-  customGravity: 1
+  currentPlanet: 3
   player: {fileID: 400118320}
 --- !u!4 &1398418696
 Transform:
@@ -3758,7 +3758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7641014710493729111, guid: 6717fc5dc87c02d439f1eee15b53ada4, type: 3}
       propertyPath: thrustForce
-      value: 600
+      value: 750
       objectReference: {fileID: 0}
     - target: {fileID: 8114777789010063164, guid: 6717fc5dc87c02d439f1eee15b53ada4, type: 3}
       propertyPath: m_LocalPosition.x
