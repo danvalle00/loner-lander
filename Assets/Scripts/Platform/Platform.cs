@@ -11,7 +11,7 @@ public class Platform : MonoBehaviour
 
 
     private Player player;
-    [SerializeField] private float minVerticalSpeed = 100f;
+    [SerializeField] private float minVerticalSpeed = 200f;
     [Header("Platform Settings")]
     [SerializeField, Range(1, 10)] private int scoreMultiplier = 1;
     [SerializeField, Range(1, 10)] private int basePlatformLength = 1;

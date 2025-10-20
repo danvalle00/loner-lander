@@ -34,15 +34,6 @@ public class GravityManager : MonoBehaviour
         ApplyGravity(currentPlanet);
     }
 
-
-    void OnValidate() // chamado no editor quando um valor é alterado
-    {
-        if (Application.isPlaying && player != null)
-        {
-            ApplyGravity(currentPlanet);
-        }
-    }
-
     private void ApplyGravity(PlanetType planet)
     {
         Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
