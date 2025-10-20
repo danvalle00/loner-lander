@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour
     public FuelScriptableObject fuelData;
 
     [Header("Runtime Score State")]
-    [SerializeField] private int currentScorePoints;
+    [SerializeField] private float currentScorePoints;
     [SerializeField] private int currentScoreMultiplier;
 
     [Header("Score Settings")]
@@ -29,12 +29,15 @@ public class ScoreManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        currentScorePoints = scoreData.initialScore;
+        currentScoreMultiplier = 1;
     }
 
     void Update()
     {
         // pegar o score inicial e diminuir ao decorrer do tempo 
-        currentScorePoints -= Mathf.FloorToInt(Time.deltaTime * scoreDecreaseRate);
+        currentScorePoints -= Time.deltaTime * scoreDecreaseRate;
+        currentScorePoints = Mathf.Max(0, currentScorePoints);
     }
     public void SetScoreMultiplier(int multiplier)
     {
@@ -47,15 +50,15 @@ public class ScoreManager : MonoBehaviour
         return currentScoreMultiplier;
     }
 
-    public int GetCurrentScore()
+    public string GetCurrentScore()
     {
-        return currentScorePoints;
+        return string.Format("{0:F0}", currentScorePoints);
     }
 
     public void FuelToScore() // qntidade de fuel convertida em pontos qnt mais fuel menos pontos iniciais
     {
         float fuelAmount = fuelSlider.value;
-        int pointsFromFuel = 1000 + Mathf.FloorToInt(fuelAmount / fuelToScoreRate);
+        int pointsFromFuel = 1000 + Mathf.FloorToInt(fuelAmount * fuelToScoreRate);
         fuelData.maxFuel = fuelAmount;
         scoreData.initialScore = pointsFromFuel;
     }

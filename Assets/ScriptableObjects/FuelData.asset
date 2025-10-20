@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec3c6dfef63cdb4c95803f3aef7360f, type: 3}
   m_Name: FuelData
   m_EditorClassIdentifier: Assembly-CSharp::FuelScriptableObject
-  maxFuel: 0
+  maxFuel: 525
+  fuelConsumptionRate: 3

@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         currentFuel = fuelData.maxFuel;
     }
+
     void OnEnable()
     {
         playerController.Player.Enable();
@@ -98,9 +99,9 @@ public class Player : MonoBehaviour
         return verticalSpeed;
     }
 
-    public float GetCurrentFuel()
+    public string GetCurrentFuel()
     {
-        return currentFuel;
+        return string.Format("{0:F1}", currentFuel);
     }
 
 }

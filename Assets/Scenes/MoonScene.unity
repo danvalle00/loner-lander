@@ -530,6 +530,7 @@ GameObject:
   - component: {fileID: 542645665}
   - component: {fileID: 542645667}
   - component: {fileID: 542645666}
+  - component: {fileID: 542645668}
   m_Layer: 5
   m_Name: ScoreInfo
   m_TagString: Untagged
@@ -576,7 +577,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 'Current Score: 0
+
+    Current Multi: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -641,7 +644,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -199.96332, w: -36.10437}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -655,6 +658,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 542645664}
   m_CullTransparentMesh: 1
+--- !u!114 &542645668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542645664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fcbf5a30d867e489aa429ba1805ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreInfoUI
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3082,6 +3097,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
   scoreData: {fileID: 11400000, guid: eedefb32a9c1b48448cfef6dc4adc0f6, type: 2}
   fuelData: {fileID: 0}
+  currentScorePoints: 0
+  currentScoreMultiplier: 0
+  scoreDecreaseRate: 3
+  fuelToScoreRate: 0.5
 --- !u!4 &1072177516
 Transform:
   m_ObjectHideFlags: 0
@@ -3217,7 +3236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78467e160ebe8d447bd3749ce96a59a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GravityManager
-  currentPlanet: 3
+  currentPlanet: 0
   player: {fileID: 400118320}
 --- !u!4 &1398418696
 Transform:

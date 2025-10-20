@@ -11,7 +11,6 @@ public class PlanetInfoUI : MonoBehaviour
     void Awake()
     {
         planetInfoText = GetComponent<TextMeshProUGUI>();
-
     }
 
     void Start()

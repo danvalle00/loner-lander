@@ -106,11 +106,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25b1751a824ee04f96b4debc62bf82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  fuelData: {fileID: 11400000, guid: c83e7c1405110fe4fa8d08d4cfabb7b5, type: 2}
   thrustForce: 750
   rotationStepAngle: 15
-  maxFuel: 100
   currentFuel: 0
-  fuelConsumptionRate: 10
   thrustInput: 0
   rotationInput: 0
   horizontalSpeed: 
