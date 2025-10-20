@@ -1,11 +1,10 @@
+using System;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance { get; private set; }
-
-    [SerializeField] private int scoreMultiplier = 1;
-
+    public ScoreScriptableObjects scoreData;
     void Awake()
     {
         if (Instance == null)
@@ -19,13 +18,20 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        // pegar o score inicial e diminuir ao decorrer do tempo 
+        scoreData.scorePoints -= Mathf.FloorToInt(Time.deltaTime * 3);
+    }
     public void SetScoreMultiplier(int multiplier)
     {
-        scoreMultiplier = multiplier;
+        scoreData.scoreMultiplier = multiplier;
+        scoreData.scorePoints *= multiplier; // aplicar o multiplicador ao score atual
     }
 
     public int GetScoreMultiplier()
     {
-        return scoreMultiplier;
+        return scoreData.scoreMultiplier;
     }
+
 }
