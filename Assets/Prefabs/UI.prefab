@@ -846,7 +846,6 @@ GameObject:
   - component: {fileID: 5426182382669132384}
   - component: {fileID: 4500644572445864014}
   - component: {fileID: 1073657573862698129}
-  - component: {fileID: 7933836049853929175}
   m_Layer: 5
   m_Name: ScoreInfo
   m_TagString: Untagged
@@ -974,18 +973,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &7933836049853929175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5195292228008773644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83fcbf5a30d867e489aa429ba1805ec0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScoreInfoUI
 --- !u!1 &5217458557523763213
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,7 +984,6 @@ GameObject:
   - component: {fileID: 7915485454353262636}
   - component: {fileID: 2452597966743349855}
   - component: {fileID: 2182707071250902377}
-  - component: {fileID: 2864874160227877547}
   m_Layer: 5
   m_Name: ShipInfo
   m_TagString: Untagged
@@ -1123,19 +1109,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2864874160227877547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5217458557523763213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56605438256e9304dbacc93ab2537618, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShipInfoUI
-  player: {fileID: 0}
 --- !u!1 &5607971163091991756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1414,6 +1387,7 @@ GameObject:
   - component: {fileID: 2874112474081119750}
   - component: {fileID: 6908890107162280680}
   - component: {fileID: 2701293516376205683}
+  - component: {fileID: 6303031500212664200}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -1508,6 +1482,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6303031500212664200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7784228944829376603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a79b4a4e9483e147a991dad5bba05d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenInfo
+  planetInfoText: {fileID: 2728088347222134601}
+  scoreText: {fileID: 1073657573862698129}
+  shipInfoText: {fileID: 2182707071250902377}
+  player: {fileID: 0}
 --- !u!1 &7957554304894550869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1926,7 +1916,6 @@ GameObject:
   - component: {fileID: 2350644329380902258}
   - component: {fileID: 5706953516234208070}
   - component: {fileID: 2728088347222134601}
-  - component: {fileID: 158878328779929020}
   m_Layer: 5
   m_Name: PlanetInfo
   m_TagString: Untagged
@@ -2052,15 +2041,3 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &158878328779929020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8957855737383786323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 754674376b74e6f46845558b52eb4c9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlanetInfoUI
