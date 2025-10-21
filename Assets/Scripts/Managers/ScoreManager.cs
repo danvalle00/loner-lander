@@ -67,7 +67,10 @@ public class ScoreManager : MonoBehaviour
     }
     public void ScoreAddPoints()
     {
-        if (hasScored) return;
+        if (hasScored)
+        {
+            return;
+        }
         hasScored = true;
         float pointSum = (currentScorePoints + fuelData.remainingFuel) * currentScoreMultiplier;
         scoreData.highScore = pointSum;

@@ -45,11 +45,11 @@ public class Platform : MonoBehaviour
         {
             ScoreManager.Instance.SetScoreMultiplier(scoreMultiplier);
             fuelData.remainingFuel = player.GetCurrentFuel();
-            ScoreManager.Instance.ScoreAddPoints();
+            GameManager.Instance.Win();
         }
         else
         {
-            Debug.Log("Crash! Landing too fast.");
+            GameManager.Instance.Lose();
         }
     }
 

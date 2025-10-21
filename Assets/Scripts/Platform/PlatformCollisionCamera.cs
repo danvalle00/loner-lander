@@ -10,23 +10,24 @@ public class PlatformCollisionCamera : MonoBehaviour
     {
         mainCamera = FindFirstObjectByType<Camera>();
         changedPositions = GetComponent<Transform>();
-        cameraOriginalSize = mainCamera.orthographicSize;
+        if (mainCamera != null)
+        {
+            cameraOriginalSize = mainCamera.orthographicSize;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && mainCamera != null)
         {
-            Debug.Log("Player entered platform trigger area. Adjusting camera.");
             mainCamera.transform.position = new Vector3(changedPositions.position.x, changedPositions.position.y, mainCamera.transform.position.z);
             mainCamera.orthographicSize = 7.5f;
         }
     }
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && mainCamera != null)
         {
-            Debug.Log("Player exited platform trigger area. Resetting camera.");
             mainCamera.orthographicSize = cameraOriginalSize;
             mainCamera.transform.position = new Vector3(0, 0, mainCamera.transform.position.z);
         }

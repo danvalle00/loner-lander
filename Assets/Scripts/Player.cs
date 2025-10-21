@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     [SerializeField] private string verticalSpeed;
 
     private bool stepReady = true;
-
+    private bool inputsEnabled = true;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -37,7 +37,11 @@ public class Player : MonoBehaviour
 
     void OnEnable()
     {
-        playerController.Player.Enable();
+        if (inputsEnabled)
+        {
+            playerController.Player.Enable();
+        }
+
     }
     void OnDisable()
     {
@@ -49,6 +53,12 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (!inputsEnabled)
+        {
+            rotationInput = 0f;
+            thrustInput = 0f;
+            return;
+        }
         rotationInput = playerController.Player.Rotate.ReadValue<float>();
         thrustInput = playerController.Player.Thrust.ReadValue<float>();
         HandlerThrust();
@@ -104,4 +114,26 @@ public class Player : MonoBehaviour
         return currentFuel;
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Terrain"))
+        {
+            GameManager.Instance.Lose();
+        }
+    }
+
+    public void DisableInputs()
+    {
+        inputsEnabled = false;
+        playerController.Player.Disable();
+        rotationInput = 0f;
+        thrustInput = 0f;
+    }
+    public void EnableInputs()
+    {
+        inputsEnabled = true;
+        playerController.Player.Enable();
+    }
 }
+
+
