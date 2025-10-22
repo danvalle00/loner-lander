@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
@@ -8,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject losePanel;
     private bool isGameOver = false;
     private Player player;
-    void Awake()
+    void Awake()// singleton initialization
     {
         if (Instance == null)
         {
@@ -19,19 +20,29 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Time.timeScale = 1f;
-        if (player == null)
-        {
-            player = FindFirstObjectByType<Player>();
-        }
-        HidePanels();
 
     }
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        isGameOver = false;
+        Time.timeScale = 1f;
+        FindReferences();
+        HidePanels();
+    }
+
     public void Win()
     {
         if (isGameOver) return;
         isGameOver = true;
-
         ScoreManager.Instance.ScoreAddPoints();
         player.DisableInputs();
         FreezeAndShow(winPanel);
@@ -47,24 +58,44 @@ public class GameManager : MonoBehaviour
     }
     private void FreezeAndShow(GameObject panel)
     {
-        panel.SetActive(true);
-        Time.timeScale = 0f;
+        if (panel != null)
+        {
+            panel.SetActive(true);
+            Time.timeScale = 0f;
+        }
     }
     private void HidePanels()
     {
-        winPanel.SetActive(false);
-        losePanel.SetActive(false);
+        if (winPanel) winPanel.SetActive(false);
+        if (losePanel) losePanel.SetActive(false);
+    }
+
+    private void FindReferences()
+    {
+        if (winPanel == null) // if not assigned in inspector assign it
+        {
+            winPanel = GameObject.Find("WinPanel");
+        }
+        if (losePanel == null)
+        {
+            losePanel = GameObject.Find("LosePanel");
+        }
+        if (player == null)
+        {
+            player = FindFirstObjectByType<Player>();
+        }
     }
 
     private void ResumeTime()
     {
         Time.timeScale = 1f;
     }
-    public void RestartLevel()
+
+    // funcoes que os botoes chamam n UI
+    public void RestartLevel(string sceneName)
     {
         ResumeTime();
-        Scene active = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(active.name);
+        SceneManager.LoadScene(sceneName);
     }
     public void LoadMainMenu()
     {

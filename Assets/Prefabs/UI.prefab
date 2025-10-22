@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 5506981648282105385}
   - component: {fileID: 3797996049144869399}
   m_Layer: 5
-  m_Name: Win
+  m_Name: WinPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -769,7 +769,7 @@ GameObject:
   - component: {fileID: 3433510115717349425}
   - component: {fileID: 2011283771614011007}
   m_Layer: 5
-  m_Name: Lose
+  m_Name: LosePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
