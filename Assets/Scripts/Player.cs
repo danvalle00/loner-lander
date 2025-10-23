@@ -34,7 +34,16 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         currentFuel = fuelData.maxFuel;
     }
+    void Start()
+    {
+        if (GravityManager.Instance == null)
+        {
+            return;
+        }
 
+        float gravityScale = GravityManager.Instance.GetCurrentGravityScale();
+        rb.gravityScale = gravityScale;
+    }
     void OnEnable()
     {
         if (inputsEnabled)

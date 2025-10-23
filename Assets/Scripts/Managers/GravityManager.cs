@@ -6,10 +6,6 @@ public class GravityManager : MonoBehaviour
     [Header("Gravity Settings")]
     [SerializeField] private PlanetType currentPlanet = PlanetType.Moon;
 
-    [Header("References")]
-    [SerializeField] private Player player;
-
-
     private const float MOON_GRAVITY = 0.166f;
     private const float MARS_GRAVITY = 0.38f;
     private const float PLUTO_GRAVITY = 0.063f;
@@ -17,28 +13,19 @@ public class GravityManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null)
+        if (Instance != null && Instance != this)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+            Destroy(this.gameObject);
+            return;
         }
-        else
-        {
-            Destroy(gameObject);
-        }
-        if (player == null)
-        {
-            player = FindFirstObjectByType<Player>();
-        }
-        ApplyGravity(currentPlanet);
+        Instance = this;
     }
-
-    private void ApplyGravity(PlanetType planet)
+    void OnDestroy()
     {
-        Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
-        float gravityScale = GetGravityScale(planet);
-        rb.gravityScale = gravityScale;
-        Debug.Log($"Gravity applied: {planet} with scale {gravityScale}");
+        if (Instance == this)
+        {
+            Instance = null;
+        }
     }
 
     private float GetGravityScale(PlanetType planet)
@@ -52,27 +39,16 @@ public class GravityManager : MonoBehaviour
             _ => MOON_GRAVITY,
         };
     }
-    public void SetPlanet(PlanetType planet)
-    {
-        currentPlanet = planet;
-        ApplyGravity(currentPlanet);
-        Debug.Log($"Gravity set to {planet} with scale {GetGravityScale(planet)}");
-    }
 
+    public PlanetType GetCurrentPlanet() => currentPlanet;
+    public float GetCurrentGravityScale() => GetGravityScale(currentPlanet);
 
-    public PlanetType GetCurrentPlanet()
-    {
-        return currentPlanet;
-    }
-    public float GetCurrentGravityScale()
-    {
-        return GetGravityScale(currentPlanet);
-    }
-    public enum PlanetType
-    {
-        Moon,
-        Mars,
-        Pluto,
-        Uranus
-    }
 }
+public enum PlanetType
+{
+    Moon,
+    Mars,
+    Pluto,
+    Uranus
+}
+
