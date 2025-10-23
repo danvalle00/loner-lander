@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private string[] levelProgression = new string[]
     {
+        "ChooseDifficulty",
         "MoonScene",
         "MarsScene",
         "PlutoScene",

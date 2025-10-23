@@ -44,7 +44,6 @@ public class Platform : MonoBehaviour
         if (collision.gameObject == player.gameObject && verticalSpeed < minVerticalSpeed)
         {
             ScoreManager.Instance.SetScoreMultiplier(scoreMultiplier);
-            fuelData.remainingFuel = player.GetCurrentFuel();
             GameManager.Instance.Win();
         }
         else

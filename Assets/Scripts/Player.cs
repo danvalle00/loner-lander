@@ -5,17 +5,15 @@ public class Player : MonoBehaviour
 {
 
     public InputSystem_Actions playerController;
-    public FuelScriptableObject fuelData;
+
     private Rigidbody2D rb;
     private Animator animator;
 
     [Header("Movement Settings")]
     [SerializeField] private float thrustForce = 5f;
     [SerializeField] private float rotationStepAngle = 15f; // 15 graus na rotacao qnd apertar o input
-
     [Header("Fuel Settings")]
-    [SerializeField] private float currentFuel;
-
+    [SerializeField] private float fuelConsumptionRate = 3f;
 
     [Header("Input Debug")]
     [SerializeField] private float thrustInput;
@@ -32,7 +30,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerController = new InputSystem_Actions();
         animator = GetComponent<Animator>();
-        currentFuel = fuelData.maxFuel;
+
     }
     void Start()
     {
@@ -91,13 +89,16 @@ public class Player : MonoBehaviour
 
     private void HandlerThrust()
     {
-        if (thrustInput > 0f && currentFuel > 0f) // thrustInput se n for 0 vai ser 1 entao
+        if (thrustInput > 0f && FuelManager.Instance.GetRemainingFuel() > 0f) // thrustInput se n for 0 vai ser 1 entao
         {
             Vector2 force = transform.up * thrustForce * Time.fixedDeltaTime;
             rb.AddForce(force, ForceMode2D.Force);
-            currentFuel -= thrustInput * Time.fixedDeltaTime * fuelData.fuelConsumptionRate; // consome X unidade de fuel por sec
+            float fuelConsumption = thrustInput * Time.fixedDeltaTime * fuelConsumptionRate;
+            FuelManager.Instance.ConsumeFuel(fuelConsumption);
         }
     }
+
+
     private void HandlerAnimator()
     {
         animator.SetFloat("thrustInput", thrustInput);
@@ -118,10 +119,7 @@ public class Player : MonoBehaviour
         return verticalSpeed;
     }
 
-    public float GetCurrentFuel()
-    {
-        return currentFuel;
-    }
+
 
     void OnCollisionEnter2D(Collision2D collision)
     {

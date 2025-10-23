@@ -4,67 +4,83 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance { get; private set; }
-    private Slider fuelSlider;
-    public ScoreScriptableObjects scoreData;
-    public FuelScriptableObject fuelData;
+
+    [SerializeField] private ScoreScriptableObjects scoreData;
 
     [Header("Runtime Score State")]
     [SerializeField] private float currentScorePoints;
     [SerializeField] private int currentScoreMultiplier;
+    private bool hasScored = false;
 
     [Header("Score Settings")]
-
+    [SerializeField] private float baseScorePoints = 1000f;
     [SerializeField] private float scoreDecreaseRate = 3f;
     [SerializeField] private float fuelToScoreRate = 0.5f;
 
-    private bool hasScored = false;
+    public System.Action<float> OnScoreChanged;
+    public System.Action<float> OnFinalScoreCalculated;
 
     void Awake()
     {
-        fuelSlider = FindFirstObjectByType<Slider>();
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        currentScorePoints = scoreData.initialScore;
-        currentScoreMultiplier = 1;
-    }
 
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    void Start()
+    {
+        if (scoreData == null)
+        {
+            return;
+        }
+        if (FuelManager.Instance != null)
+        {
+            FuelManager.Instance.OnFuelConfigurationChanged += OnFuelConfigurationChanged;
+        }
+    }
     void Update()
     {
-        // pegar o score inicial e diminuir ao decorrer do tempo 
-        currentScorePoints -= Time.deltaTime * scoreDecreaseRate;
+
+        if (!hasScored)
+        {
+            DecreaseScore(Time.deltaTime * scoreDecreaseRate);
+        }
+    }
+    private void OnFuelConfigurationChanged(float fuelAmount)
+    {
+
+        float calculatedScore = CalculateInitialScore(fuelAmount);
+        currentScorePoints = calculatedScore;
+        scoreData.initialScore = (int)calculatedScore;
+        OnScoreChanged?.Invoke(currentScorePoints);
+    }
+
+    private float CalculateInitialScore(float fuelAmount)
+    {
+        return baseScorePoints + (fuelAmount * fuelToScoreRate);
+    }
+
+    private void DecreaseScore(float amount)
+    {
+        float previousScore = currentScorePoints;
+        currentScorePoints -= amount;
         currentScorePoints = Mathf.Max(0, currentScorePoints);
-
+        if (previousScore != currentScorePoints)
+        {
+            OnScoreChanged?.Invoke(currentScorePoints);
+        }
     }
-    public void SetScoreMultiplier(int multiplier)
-    {
-        currentScoreMultiplier = multiplier;
+    public void SetScoreMultiplier(int multiplier) => currentScoreMultiplier = multiplier;
 
-    }
+    public int GetScoreMultiplier() => currentScoreMultiplier;
 
-    public int GetScoreMultiplier()
-    {
-        return currentScoreMultiplier;
-    }
+    public float GetCurrentScore() => currentScorePoints;
 
-    public string GetCurrentScore()
-    {
-        return string.Format("{0:F0}", currentScorePoints);
-    }
-
-    public void FuelToScore() // qntidade de fuel convertida em pontos qnt mais fuel menos pontos iniciais
-    {
-        float fuelAmount = fuelSlider.value;
-        int pointsFromFuel = 1000 + Mathf.FloorToInt(fuelAmount * fuelToScoreRate);
-        fuelData.maxFuel = fuelAmount;
-        scoreData.initialScore = pointsFromFuel;
-    }
     public void ScoreAddPoints()
     {
         if (hasScored)
@@ -72,8 +88,21 @@ public class ScoreManager : MonoBehaviour
             return;
         }
         hasScored = true;
-        float pointSum = (currentScorePoints + fuelData.remainingFuel) * currentScoreMultiplier;
-        scoreData.highScore = pointSum;
-        currentScorePoints = pointSum;
+        float remainingFuelBonus = FuelManager.Instance != null ? FuelManager.Instance.GetRemainingFuel() : 0f;
+        float finalScore = (currentScorePoints + remainingFuelBonus) * currentScoreMultiplier;
+        if (finalScore > scoreData.highScore)
+        {
+            scoreData.highScore = finalScore;
+        }
+        OnFinalScoreCalculated?.Invoke(finalScore);
+    }
+
+    public void ResetForNewGame()
+    {
+        hasScored = false;
+        currentScoreMultiplier = 1;
+        scoreData.initialScore = baseScorePoints;
+        currentScorePoints = baseScorePoints;
+
     }
 }

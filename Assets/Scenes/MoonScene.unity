@@ -2533,7 +2533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 858790076}
   m_Layer: 0
-  m_Name: ===== Managers =====
+  m_Name: ===== NonPersistentManagers =====
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2553,8 +2553,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2010565513}
-  - {fileID: 1834285277}
-  - {fileID: 1948964956}
   - {fileID: 226331615}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2643,7 +2641,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 858790076}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 670171237694988044, guid: 08469da10a1249040a83e388c68db561, type: 3}
       propertyPath: m_Name
@@ -2790,6 +2788,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4812383618356843370, guid: c6da64475386a904391f0330c457993d, type: 3}
   m_PrefabInstance: {fileID: 60161505}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1478929266
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 617259450073569884, guid: e5035d5582106cc488f08934ddf365dc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.65785
+      objectReference: {fileID: 0}
+    - target: {fileID: 617259450073569884, guid: e5035d5582106cc488f08934ddf365dc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.47505
+      objectReference: {fileID: 0}
+    - target: {fileID: 617259450073569884, guid: e5035d5582106cc488f08934ddf365dc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 617259450073569884, guid: e5035d5582106cc488f08934ddf365dc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 617259450073569884, guid: e5035d5582106cc488f08934ddf365dc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 617259450073569884, guid: e5035d5582106cc488f08934ddf365dc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 617259450073569884, guid: e5035d5582106cc488f08934ddf365dc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 617259450073569884, guid: e5035d5582106cc488f08934ddf365dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 617259450073569884, guid: e5035d5582106cc488f08934ddf365dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 617259450073569884, guid: e5035d5582106cc488f08934ddf365dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7075510430666914639, guid: e5035d5582106cc488f08934ddf365dc, type: 3}
+      propertyPath: m_Name
+      value: FuelManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5035d5582106cc488f08934ddf365dc, type: 3}
 --- !u!1 &1526738067
 GameObject:
   m_ObjectHideFlags: 0
@@ -2826,11 +2881,6 @@ Transform:
   - {fileID: 1193040993}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1834285277 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2311924525298764128, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
-  m_PrefabInstance: {fileID: 3900312765259015349}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1837689040
 GameObject:
   m_ObjectHideFlags: 0
@@ -2947,11 +2997,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 9173200059694865191, guid: 9da1605d419460145a51575cbdb2bf68, type: 3}
   m_PrefabInstance: {fileID: 1890091446}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1948964956 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1137134506306039408, guid: 08469da10a1249040a83e388c68db561, type: 3}
-  m_PrefabInstance: {fileID: 1113215776}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2010565513 stripped
 Transform:
@@ -3526,7 +3571,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 858790076}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2311924525298764128, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3580,6 +3625,30 @@ PrefabInstance:
       propertyPath: losePanel
       value: 
       objectReference: {fileID: 690434165}
+    - target: {fileID: 8093630172881593230, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: levelProgression.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093630172881593230, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: 'levelProgression.Array.data[0]'
+      value: ChooseDifficulty
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093630172881593230, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: 'levelProgression.Array.data[1]'
+      value: MoonScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093630172881593230, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: 'levelProgression.Array.data[2]'
+      value: MarsScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093630172881593230, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: 'levelProgression.Array.data[3]'
+      value: PlutoScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093630172881593230, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: 'levelProgression.Array.data[4]'
+      value: UranusScene
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3719,6 +3788,9 @@ GameObject:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 3900312765259015349}
+  - {fileID: 1113215776}
+  - {fileID: 1478929266}
   - {fileID: 3509491429550644142}
   - {fileID: 46880302859805306}
   - {fileID: 7178932041734430592}
