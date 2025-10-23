@@ -1,12 +1,19 @@
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    [Header("UI Panels References")]
-    [SerializeField] private GameObject winPanel;
-    [SerializeField] private GameObject losePanel;
+    [Header("Level Progression")]
+    [SerializeField]
+    private string[] levelProgression = new string[]
+    {
+        "MoonScene",
+        "MarsScene",
+        "PlutoScene",
+        "UranusScene"
+    };
+    public event System.Action OnWinStateTriggered;
+    public event System.Action OnLoseStateTriggered;
     private bool isGameOver = false;
     private Player player;
     void Awake()// singleton initialization
@@ -19,6 +26,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
 
     }
@@ -35,55 +43,56 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = false;
         Time.timeScale = 1f;
-        FindReferences();
-        HidePanels();
-    }
-
-    public void Win()
-    {
-        if (isGameOver) return;
-        isGameOver = true;
-        ScoreManager.Instance.ScoreAddPoints();
-        player.DisableInputs();
-        FreezeAndShow(winPanel);
-
-    }
-
-    public void Lose()
-    {
-        if (isGameOver) return;
-        isGameOver = true;
-        player.DisableInputs();
-        FreezeAndShow(losePanel);
-    }
-    private void FreezeAndShow(GameObject panel)
-    {
-        if (panel != null)
-        {
-            panel.SetActive(true);
-            Time.timeScale = 0f;
-        }
-    }
-    private void HidePanels()
-    {
-        if (winPanel) winPanel.SetActive(false);
-        if (losePanel) losePanel.SetActive(false);
-    }
-
-    private void FindReferences()
-    {
-        if (winPanel == null) // if not assigned in inspector assign it
-        {
-            winPanel = GameObject.Find("WinPanel");
-        }
-        if (losePanel == null)
-        {
-            losePanel = GameObject.Find("LosePanel");
-        }
         if (player == null)
         {
             player = FindFirstObjectByType<Player>();
         }
+    }
+
+    public void Win()
+    {
+        if (isGameOver)
+        {
+            return;
+        }
+        isGameOver = true;
+        ScoreManager.Instance.ScoreAddPoints();
+        player.DisableInputs();
+        Time.timeScale = 0f;
+        OnWinStateTriggered?.Invoke();
+    }
+
+    public void Lose()
+    {
+        if (isGameOver)
+        {
+            return;
+        }
+        isGameOver = true;
+        player.DisableInputs();
+        Time.timeScale = 0f;
+        OnLoseStateTriggered?.Invoke();
+    }
+
+
+    private string GetNextLevelName()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+        for (int i = 0; i < levelProgression.Length; i++)
+        {
+            if (levelProgression[i] == currentScene)
+            {
+                if (i + 1 < levelProgression.Length)
+                {
+                    return levelProgression[i + 1];
+                }
+                else
+                {
+                    return "MainMenu";
+                }
+            }
+        }
+        return "MainMenu";
     }
 
     private void ResumeTime()
@@ -92,9 +101,10 @@ public class GameManager : MonoBehaviour
     }
 
     // funcoes que os botoes chamam n UI
-    public void RestartLevel(string sceneName)
+    public void RestartLevel()
     {
         ResumeTime();
+        string sceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(sceneName);
     }
     public void LoadMainMenu()
@@ -107,5 +117,12 @@ public class GameManager : MonoBehaviour
         ResumeTime();
         SceneManager.LoadScene(sceneName);
     }
+    public void LoadNextLevel()
+    {
+        ResumeTime();
+        string nextLevel = GetNextLevelName();
+        SceneManager.LoadScene(nextLevel);
+    }
+
 
 }
