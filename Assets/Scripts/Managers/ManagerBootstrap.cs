@@ -5,7 +5,7 @@ public class ManagerBootstrap : MonoBehaviour
     [Header("Managers References")]
     [SerializeField] private GameObject gameManagerPrefab;
     [SerializeField] private GameObject scoreManagerPrefab;
-    [SerializeField] private GameObject gravityManagerPrefab;
+    [SerializeField] private GameObject fuelManagerPrefab;
     void Awake()
     {
         if (FindFirstObjectByType<GameManager>() == null)
@@ -23,11 +23,11 @@ public class ManagerBootstrap : MonoBehaviour
                 Instantiate(scoreManagerPrefab);
             }
         }
-        if (FindFirstObjectByType<GravityManager>() == null)
+        if (FindFirstObjectByType<FuelManager>() == null)
         {
-            if (gravityManagerPrefab != null)
+            if (fuelManagerPrefab != null)
             {
-                Instantiate(gravityManagerPrefab);
+                Instantiate(fuelManagerPrefab);
             }
         }
         Destroy(this.gameObject);

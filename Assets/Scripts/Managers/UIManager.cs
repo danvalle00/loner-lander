@@ -1,4 +1,7 @@
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -6,6 +9,9 @@ public class UIManager : MonoBehaviour
     [Header("Panel References")]
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject losePanel;
+    [SerializeField] private TextMeshProUGUI finalScoreText;
+    [SerializeField] private TextMeshProUGUI highScoreText;
+
 
     void Start()
     {
@@ -16,11 +22,15 @@ public class UIManager : MonoBehaviour
 
         HidePanels();
 
-        // Subscribe to game state events
+
         GameManager.Instance.OnWinStateTriggered += ShowWinPanel;
         GameManager.Instance.OnLoseStateTriggered += ShowLosePanel;
 
-        // Set up button listeners
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.OnFinalScoreCalculated += HandleFinalScore;
+        }
+
         SetupWinPanelButtons();
         SetupLosePanelButtons();
     }
@@ -32,8 +42,25 @@ public class UIManager : MonoBehaviour
             GameManager.Instance.OnWinStateTriggered -= ShowWinPanel;
             GameManager.Instance.OnLoseStateTriggered -= ShowLosePanel;
         }
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.OnFinalScoreCalculated -= HandleFinalScore;
+        }
     }
 
+    private void HandleFinalScore(float finalScore, float highScore)
+    {
+        if (finalScoreText != null)
+        {
+            finalScoreText.text = $"Final Score: {finalScore:F0}";
+        }
+
+        if (highScoreText != null)
+        {
+            highScoreText.text = $"High Score: {highScore:F0}";
+        }
+
+    }
     private void ShowWinPanel()
     {
         if (winPanel != null)
@@ -56,6 +83,7 @@ public class UIManager : MonoBehaviour
         {
             return;
         }
+
 
         Button nextLevelButton = FindButtons(winPanel.transform, "NextLevel");
         Button mainMenuButton = FindButtons(winPanel.transform, "MainMenu");

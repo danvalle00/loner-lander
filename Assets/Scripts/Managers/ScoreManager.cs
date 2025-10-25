@@ -18,7 +18,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private float fuelToScoreRate = 0.5f;
 
     public System.Action<float> OnScoreChanged;
-    public System.Action<float> OnFinalScoreCalculated;
+    public System.Action<float, float> OnFinalScoreCalculated;
 
     void Awake()
     {
@@ -94,7 +94,7 @@ public class ScoreManager : MonoBehaviour
         {
             scoreData.highScore = finalScore;
         }
-        OnFinalScoreCalculated?.Invoke(finalScore);
+        OnFinalScoreCalculated?.Invoke(finalScore, scoreData.highScore);
     }
 
     public void ResetForNewGame()

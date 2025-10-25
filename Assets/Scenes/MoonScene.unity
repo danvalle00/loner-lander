@@ -3666,6 +3666,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 413685613}
+    - target: {fileID: 2728088347222134601, guid: c50bd58cc2570c64d9e99ca37e41dc8d, type: 3}
+      propertyPath: m_text
+      value: 'Current Planet:
+
+        Gravity Scale:'
+      objectReference: {fileID: 0}
     - target: {fileID: 4445432172141650621, guid: c50bd58cc2570c64d9e99ca37e41dc8d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
