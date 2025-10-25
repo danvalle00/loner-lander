@@ -2668,6 +2668,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2728088347222134601, guid: c50bd58cc2570c64d9e99ca37e41dc8d, type: 3}
+      propertyPath: m_text
+      value: "Current Planet: \nGravity Scale: "
+      objectReference: {fileID: 0}
     - target: {fileID: 7784228944829376603, guid: c50bd58cc2570c64d9e99ca37e41dc8d, type: 3}
       propertyPath: m_Name
       value: UI

@@ -91,11 +91,13 @@ public class ScoreManager : MonoBehaviour
         hasScored = true;
         float remainingFuelBonus = FuelManager.Instance != null ? FuelManager.Instance.GetRemainingFuel() : 0f;
         float finalScore = (currentScorePoints + remainingFuelBonus) * currentScoreMultiplier;
+        currentScorePoints = finalScore;
         if (finalScore > scoreData.highScore)
         {
             scoreData.highScore = finalScore;
         }
         OnFinalScoreCalculated?.Invoke(finalScore, scoreData.highScore);
+        OnScoreChanged?.Invoke(currentScorePoints);
     }
     public void ResetForNextLevel()
     {

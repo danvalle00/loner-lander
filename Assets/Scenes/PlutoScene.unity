@@ -281,6 +281,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c50bd58cc2570c64d9e99ca37e41dc8d, type: 3}
+--- !u!114 &239771056 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4100391563002403642, guid: c50bd58cc2570c64d9e99ca37e41dc8d, type: 3}
+  m_PrefabInstance: {fileID: 239771055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &239771057 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 618254762562922920, guid: c50bd58cc2570c64d9e99ca37e41dc8d, type: 3}
+  m_PrefabInstance: {fileID: 239771055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &567990786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2556,6 +2578,14 @@ PrefabInstance:
       propertyPath: losePanel
       value: 
       objectReference: {fileID: 1278219900}
+    - target: {fileID: 1522365352402796910, guid: 16eba986c0664854b84911062ac07b0e, type: 3}
+      propertyPath: highScoreText
+      value: 
+      objectReference: {fileID: 239771056}
+    - target: {fileID: 1522365352402796910, guid: 16eba986c0664854b84911062ac07b0e, type: 3}
+      propertyPath: finalScoreText
+      value: 
+      objectReference: {fileID: 239771057}
     - target: {fileID: 5831876657116399088, guid: 16eba986c0664854b84911062ac07b0e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.14628
