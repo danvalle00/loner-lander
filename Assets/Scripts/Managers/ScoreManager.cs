@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -96,13 +97,15 @@ public class ScoreManager : MonoBehaviour
         }
         OnFinalScoreCalculated?.Invoke(finalScore, scoreData.highScore);
     }
-
+    public void ResetForNextLevel()
+    {
+        hasScored = false;
+        currentScoreMultiplier = 1;
+        OnScoreChanged?.Invoke(currentScorePoints);
+    }
     public void ResetForNewGame()
     {
         hasScored = false;
         currentScoreMultiplier = 1;
-        scoreData.initialScore = baseScorePoints;
-        currentScorePoints = baseScorePoints;
-
     }
 }

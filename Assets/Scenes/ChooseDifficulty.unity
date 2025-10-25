@@ -588,10 +588,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1810965766}
-        m_TargetAssemblyTypeName: ChangeScenes, Assembly-CSharp
-        m_MethodName: ChangeToScene
-        m_Mode: 5
+      - m_Target: {fileID: 1810965765}
+        m_TargetAssemblyTypeName: DifficultySceneUI, Assembly-CSharp
+        m_MethodName: OnStartGameButtonClicked
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -941,7 +941,6 @@ GameObject:
   - component: {fileID: 1810965762}
   - component: {fileID: 1810965761}
   - component: {fileID: 1810965765}
-  - component: {fileID: 1810965766}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1052,18 +1051,6 @@ MonoBehaviour:
   scoreData: {fileID: 11400000, guid: eedefb32a9c1b48448cfef6dc4adc0f6, type: 2}
   fuelText: {fileID: 1877390227}
   scoreText: {fileID: 1424596797}
---- !u!114 &1810965766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1810965760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2de6b3c79e6fedc46a69daac64c42492, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChangeScenes
 --- !u!1 &1851215511
 GameObject:
   m_ObjectHideFlags: 0

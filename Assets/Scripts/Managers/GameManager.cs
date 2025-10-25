@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -7,7 +8,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private string[] levelProgression = new string[]
     {
-        "ChooseDifficulty",
         "MoonScene",
         "MarsScene",
         "PlutoScene",
@@ -113,17 +113,34 @@ public class GameManager : MonoBehaviour
         ResumeTime();
         SceneManager.LoadScene("MainMenu");
     }
-    public void LoadGameLevel(string sceneName)
-    {
-        ResumeTime();
-        SceneManager.LoadScene(sceneName);
-    }
     public void LoadNextLevel()
     {
         ResumeTime();
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.ResetForNextLevel();
+        }
         string nextLevel = GetNextLevelName();
         SceneManager.LoadScene(nextLevel);
     }
+    public void StartNewRun()
+    {
+        ResumeTime();
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.ResetForNewGame();
+        }
+        SceneManager.LoadScene("ChooseDifficulty");
+    }
 
+    public void StartGame()
+    {
+        ResumeTime();
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.ResetForNewGame();
+        }
+        SceneManager.LoadScene(levelProgression[0]);
+    }
 
 }

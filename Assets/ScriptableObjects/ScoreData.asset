@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4889ce42d12e9749b4370d9bc578f0d, type: 3}
   m_Name: ScoreData
   m_EditorClassIdentifier: Assembly-CSharp::ScoreScriptableObjects
-  initialScore: 1340
+  initialScore: 1500
   highScore: 0

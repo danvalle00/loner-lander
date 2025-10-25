@@ -751,9 +751,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1796253624}
-        m_TargetAssemblyTypeName: QuitGame, Assembly-CSharp
-        m_MethodName: QuitApplication
+      - m_Target: {fileID: 1796253623}
+        m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
+        m_MethodName: OnQuitButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -885,9 +885,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1796253623}
-        m_TargetAssemblyTypeName: ChangeScenes, Assembly-CSharp
-        m_MethodName: ChangeToScene
-        m_Mode: 5
+        m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
+        m_MethodName: OnPlayButtonClicked
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1026,9 +1026,8 @@ GameObject:
   - component: {fileID: 1796253620}
   - component: {fileID: 1796253619}
   - component: {fileID: 1796253623}
-  - component: {fileID: 1796253624}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1128,21 +1127,86 @@ MonoBehaviour:
   m_GameObject: {fileID: 1796253618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2de6b3c79e6fedc46a69daac64c42492, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f14d0d7794a5d24ebac22566308fdf4, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChangeScenes
---- !u!114 &1796253624
-MonoBehaviour:
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenuUI
+--- !u!1001 &1921213041
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796253618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d22f5fca7c31924d8eb130a7fae21bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::QuitGame
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2311924525298764128, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1003.2219
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311924525298764128, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 598.23596
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311924525298764128, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311924525298764128, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311924525298764128, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311924525298764128, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311924525298764128, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311924525298764128, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311924525298764128, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311924525298764128, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5998165886404976216, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093630172881593230, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: levelProgression.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093630172881593230, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: 'levelProgression.Array.data[0]'
+      value: MoonScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093630172881593230, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: 'levelProgression.Array.data[1]'
+      value: MarsScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093630172881593230, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: 'levelProgression.Array.data[2]'
+      value: PlutoScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093630172881593230, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
+      propertyPath: 'levelProgression.Array.data[3]'
+      value: UranusScene
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9de693d220d183147a7f15cfda3ba36c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1150,3 +1214,4 @@ SceneRoots:
   - {fileID: 650175560}
   - {fileID: 1796253622}
   - {fileID: 1347894004}
+  - {fileID: 1921213041}

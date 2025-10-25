@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class DifficultySceneData : MonoBehaviour
+public class DifficultySceneUI : MonoBehaviour
 {
     public FuelScriptableObject fuelData;
     public ScoreScriptableObjects scoreData;
@@ -13,5 +13,14 @@ public class DifficultySceneData : MonoBehaviour
     {
         fuelText.text = $"Initial Fuel: {fuelData.maxFuel}";
         scoreText.text = $"Initial Score: {scoreData.initialScore}";
+    }
+
+    public void OnStartGameButtonClicked()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.StartGame();
+        }
+
     }
 }
